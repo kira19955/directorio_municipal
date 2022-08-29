@@ -1,0 +1,83 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="directorio_municipal.list">
+      <field name="name">Directorio Municipal</field>
+      <field name="model">directorio_municipal.directorio_municipal</field>
+      <field name="arch" type="xml">
+        <tree default_order='orden_dependencia '>
+          <field name="nivel"/>
+          <field name="nombre_area"/>
+          <field name="prefijo_titular"/>
+          <field name="nombre_titular" />
+          <field name="ubicacion_oficina"/>
+          <field name="telefono_area" />
+          <field name="correo_area" />
+          <field name="depende_superior" />
+          <field name="siglas"/>
+          <field name="orden_dependencia"/>
+          
+        </tree>
+      </field>
+    </record>
+    
+    <record id="model_name_view_form" model="ir.ui.view">
+      <field name="name">Directorio Municipal</field>
+      <field name="model">directorio_municipal.directorio_municipal</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <notebook>
+            <page string="Datos">
+            <group>
+             <group >
+              <field name="nivel"  />
+              <field name="nombre_area"/>
+              <field name="prefijo_titular"/>
+              <field name="nombre_titular" placeholder="Nombre del titular"/>
+              <field name="ubicacion_oficina" placeholder="Ubicación de la oficina"/>
+            
+             </group>
+             <group>
+              <field name="telefono_area" />
+              <field name="correo_area" />
+              <field name="depende_superior" />
+              <field name="siglas"/>
+              <field name="orden_dependencia"/>
+             </group>
+            </group>
+            </page>
+          </notebook>
+          </sheet>                    
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="directorio_municipal.action_window">
+      <field name="name">Directorio Municipal</field>
+      <field name="res_model">directorio_municipal.directorio_municipal</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- Imprime en horizontal el reporte generado. -!-->
+    <record id="paperformat_euro_landscape" model="report.paperformat"> 
+      <field name="name">European A4 Landscape</field>
+      <field name="default" eval="True" /> 
+      <field name="format">A4</field> 
+      <field name="page_height">0</field> 
+      <field name="page_width">0</field> 
+      <field name="orientation">Landscape</field> 
+      <field name="margin_top">40</field> 
+      <field name="margin_bottom">23</field> 
+      <field name="margin_left">7</field> 
+      <field name="margin_right">7</field> 
+      <field name="header_line" eval="False" /> 
+      <field name="header_spacing">35</field> 
+      <field name="dpi">90</field>
+    </record>
+
+    <menuitem name="Directorio municipal" id="directorio_municipal.menu_root"/>
+
+    <menuitem name="Directorio" id="directorio_municipal.menu_1" parent="directorio_municipal.menu_root" action="directorio_municipal.action_window"/>
+  </data>
+</odoo>
